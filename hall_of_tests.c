@@ -5,7 +5,7 @@
 #include "hall_of_fame.h"
 
 
-BEGIN_TEST_GROUP(vecteur)
+BEGIN_TEST_GROUP(tableau_structure)
 
 TEST(fgets) {
    char exemple [] = "scanf, c'est pas bien\n";
@@ -72,7 +72,7 @@ TEST(AffichageB) {
    afficherDonnee(file, essai);
    fclose(file);
 
-   CHECK( 0==strcmp(buffer, "pokemon GO : loic avec 498\n") );
+   CHECK( 0 == strcmp(buffer, "pokemon GO : loic avec 498\n") );
 }
 
 TEST(AffichageC) {
@@ -91,7 +91,7 @@ TEST(AffichageC) {
    afficherDonnee(file, essai);
    fclose(file);
 
-   CHECK( 0==strcmp(buffer, "overwatch : loic avec 2300\n") );
+   CHECK( 0 == strcmp(buffer, "overwatch : loic avec 2300\n") );
 }
 
 TEST(Saisie) {
@@ -106,19 +106,35 @@ TEST(Saisie) {
 
    afficherDonnee(stdout, essai);
 
-   // verification de ce qui est envoye sur le flux
-   // chaque composante est affichee avec trois chiffre apres la virgule
-   // %.3f
-   //CHECK( 0==strcmp(buffer, "[ 1.000 2.000 3.000 ]") );
-
-   
+   CHECK(  0 == strcmp(essai.nom, "rien") );
+   CHECK(  0 == strcmp(essai.alias, "dutout") );
+   CHECK( 10 == essai.score );   
 } 
 
+TEST(lectureFichier) {
+   donnee_t tableau[TAILLE_MAX];
+   int taille = 0;
+   
+   // test d'un fichier non existant
+   taille = tableauFromFilename("inconnu.txt", tableau);      
+   CHECK( 0 == taille );
 
-END_TEST_GROUP(vecteur)
+   // test du fichier exemple
+   taille = tableauFromFilename("jeu1.txt", tableau);
+
+   REQUIRE( 2 == taille );
+   CHECK  ( 0 == strcmp(tableau[0].nom, "2048"));
+   CHECK  ( 0 == strcmp(tableau[0].alias, "loic"));
+   CHECK  ( 64236 == tableau[0].score );
+   CHECK  ( 0 == strcmp(tableau[1].nom, "Minecraft"));
+   CHECK  ( 0 == strcmp(tableau[1].alias, "kiux")); // :-)
+   CHECK  ( 12304883 == tableau[1].score );
+}
+
+END_TEST_GROUP(tableau_structure)
 
 
 int main(void) {
-	RUN_TEST_GROUP(vecteur); 
+	RUN_TEST_GROUP(tableau_structure); 
  	return 0;
 }
