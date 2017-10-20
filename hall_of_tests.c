@@ -135,10 +135,10 @@ TEST(lectureFichier) {
 
    REQUIRE( 2 == taille );
    CHECK  ( 0 == strcmp(tableau[0].nom, "2048"));
-   CHECK  ( 0 == strcmp(tableau[0].alias, "loic"));
+   CHECK  ( 0 == strcmp(tableau[0].alias, "loic")); // :-)
    CHECK  ( 64236 == tableau[0].score );
    CHECK  ( 0 == strcmp(tableau[1].nom, "Minecraft"));
-   CHECK  ( 0 == strcmp(tableau[1].alias, "kiux")); // :-)
+   CHECK  ( 0 == strcmp(tableau[1].alias, "kiux")); 
    CHECK  ( 12304883 == tableau[1].score );
 }
 */
