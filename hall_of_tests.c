@@ -4,6 +4,11 @@
 #include "teZZt.h"
 #include "hall_of_fame.h"
 
+/*
+   - decommenter au fur et a mesure que vous suivez l enonce et que le code est ecrit
+   - compiler avec gcc *.c -g -Wall -Wextra -o executable
+*/
+
 
 BEGIN_TEST_GROUP(tableau_structure)
 
@@ -34,14 +39,16 @@ TEST(fgets) {
    fclose(file);
 }
 
-
+/*
 TEST(Sizeof) {
 	int taille1 = sizeof(struct donnee);
    int taille2 = sizeof(int)+100*sizeof(char); // :-)
 
 	CHECK (taille1 == taille2);
 }
+*/
 
+/*
 // pas de test mais un exemple simple de manipulation
 TEST(AffichageA) {
    struct donnee essai;
@@ -54,8 +61,9 @@ TEST(AffichageA) {
    printf("%s ", essai.alias);
    printf("%d ", essai.score);
 
-}
+} */
 
+/*
 TEST(AffichageB) {
    struct donnee essai;
    strcpy(essai.nom, "pokemon GO");
@@ -73,8 +81,9 @@ TEST(AffichageB) {
    fclose(file);
 
    CHECK( 0 == strcmp(buffer, "pokemon GO : loic avec 498\n") );
-}
+}*/
 
+/*
 TEST(AffichageC) {
    donnee_t essai;
    strcpy(essai.nom, "overwatch");
@@ -92,8 +101,9 @@ TEST(AffichageC) {
    fclose(file);
 
    CHECK( 0 == strcmp(buffer, "overwatch : loic avec 2300\n") );
-}
+} */
 
+/*
 TEST(Saisie) {
    struct donnee essai;
    char buffer[1024];
@@ -109,8 +119,9 @@ TEST(Saisie) {
    CHECK(  0 == strcmp(essai.nom, "rien") );
    CHECK(  0 == strcmp(essai.alias, "dutout") );
    CHECK( 10 == essai.score );   
-} 
+} */
 
+/*
 TEST(lectureFichier) {
    donnee_t tableau[TAILLE_MAX];
    int taille = 0;
@@ -130,6 +141,7 @@ TEST(lectureFichier) {
    CHECK  ( 0 == strcmp(tableau[1].alias, "kiux")); // :-)
    CHECK  ( 12304883 == tableau[1].score );
 }
+*/
 
 END_TEST_GROUP(tableau_structure)
 
