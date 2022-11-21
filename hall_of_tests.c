@@ -39,19 +39,16 @@ TEST(fgets) {
    fclose(file);
 }
 
-/*
 TEST(Sizeof) {
-	int taille1 = sizeof(struct donnee);
-   int taille2 = sizeof(int)+100*sizeof(char); // :-)
+	int taille1 = sizeof(donnee_t);
+   int taille2 = sizeof(int)+140*sizeof(char); // :-)
 
 	CHECK (taille1 == taille2);
 }
-*/
 
-/*
 // pas de test mais un exemple simple de manipulation
 TEST(AffichageA) {
-   struct donnee essai;
+   donnee_t essai;
 
    strcpy(essai.nom, "2048");
    strcpy(essai.alias, "loic");
@@ -61,11 +58,10 @@ TEST(AffichageA) {
    printf("%s ", essai.alias);
    printf("%d ", essai.score);
 
-} */
+} 
 
-/*
 TEST(AffichageB) {
-   struct donnee essai;
+   donnee_t essai;
    strcpy(essai.nom, "pokemon GO");
    strcpy(essai.alias, "loic");
    essai.score = 498;
@@ -81,9 +77,8 @@ TEST(AffichageB) {
    fclose(file);
 
    CHECK( 0 == strcmp(buffer, "pokemon GO : loic avec 498\n") );
-}*/
+}
 
-/*
 TEST(AffichageC) {
    donnee_t essai;
    strcpy(essai.nom, "overwatch");
@@ -101,15 +96,14 @@ TEST(AffichageC) {
    fclose(file);
 
    CHECK( 0 == strcmp(buffer, "overwatch : loic avec 2300\n") );
-} */
+} 
 
-/*
 TEST(Saisie) {
-   struct donnee essai;
+   donnee_t essai;
    char buffer[1024];
    strcpy(buffer, "rien\ndutout\n10");
    FILE * file = fmemopen(buffer, 1024, "r");
-   // REQUIRE ( NULL != file);
+   REQUIRE ( NULL != file);
 
    saisirDonnee(file, &essai);
    fclose(file);
@@ -119,9 +113,8 @@ TEST(Saisie) {
    CHECK(  0 == strcmp(essai.nom, "rien") );
    CHECK(  0 == strcmp(essai.alias, "dutout") );
    CHECK( 10 == essai.score );   
-} */
+} 
 
-/*
 TEST(lectureFichier) {
    donnee_t tableau[TAILLE_MAX];
    int taille = 0;
@@ -132,7 +125,8 @@ TEST(lectureFichier) {
 
    // test du fichier exemple
    taille = tableauFromFilename("jeu1.txt", tableau);
-
+	
+   printf("%d\n",taille);
    REQUIRE( 2 == taille );
    CHECK  ( 0 == strcmp(tableau[0].nom, "2048"));
    CHECK  ( 0 == strcmp(tableau[0].alias, "loic")); // :-)
@@ -141,7 +135,7 @@ TEST(lectureFichier) {
    CHECK  ( 0 == strcmp(tableau[1].alias, "kiux")); 
    CHECK  ( 12304883 == tableau[1].score );
 }
-*/
+
 
 END_TEST_GROUP(tableau_structure)
 
